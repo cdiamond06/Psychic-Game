@@ -5,75 +5,15 @@
     <title>The Psychic Game</title>
   </head>
   <body>
-
-    <!-- When we start playing the game, our HTML will be placed into this div. -->
     <h1> The Psychic Game </h1>
     <h3> Guess what letter I'm Thinking of </h3>
-    <div id="game">
+        <div id="game">
+        <p> wins: </p>
+        <p> Losses: </p>
+        <p> Guesses left: 9 </p>
+        <p> Your Guesses so Far: </p>
     </div>
-<!-- <script src="game.js"></script> -->
-<!-- place this script in the bottom of the page before the end of the </body> tag -->
-<!-- This is different from CSS page which must go at the top because when the webpage gets rendered in the browser it won't get modified by the CSS file ever again.   -->
-    <script type="text/javascript">
-    var win = 0;
-    var loss = 0;
-    var guessesLeft = 9;
-    var guessSoFar = [];
-    var alphabetArray= "abcdefghijklmnopqrstuvwxyz".split('');
-    // console.log(alphabetArray);
-    var computerGuess = alphabetArray[Math.floor(Math.random()*alphabetArray.length)];
-    // function that would reset all the variables
 
-    function reset (){
-     guessesLeft = 9;
-     guessSoFar = [];
-    computerGuess = alphabetArray[Math.floor(Math.random()*alphabetArray.length)];
-    }
-      // start of the event
- 
-      document.onkeyup = function(event){
-        var userGuess = event.key.toLowerCase();
-        // console.log(computerGuess);
-
-     if(alphabetArray.indexOf(userGuess) === -1){
-        alert("you must enter a valid letter")
-     } else if(userGuess !== computerGuess){
-
-              if(guessSoFar.indexOf(userGuess) === -1){
-                guessesLeft--;  
-                guessSoFar.push(userGuess);
-              } // checks to see if character is already there and if not it will push guess into guessSoFar array
-              if(guessesLeft === 0){
-                loss++;
-                reset();
-              }
-          } // compares userGuess to computer guess
-            else{
-              win++;
-              reset();
-            }
-
-        console.log(guessSoFar);
-        /*
-        function indexOf (arr, str) {
-
-          for (var i = 0; i < arr.length; i++) {
-            if(arr[i] === str) {
-              return i;
-            } else {
-              return -1;
-            }
-          }
-         */ 
-   
- 
-        var html = "<p> guess what letter I'm thinking of <p>" +
-       "<p> wins: " + win + "</p>" + "<p> Losses: " + loss + "</p>" + "<p> Guesses Left: " + guessesLeft + "</p>" + "<p>Your Guesses so far: " + guessSoFar + " </p>";
-
-        document.querySelector('#game').innerHTML = html;
-     } // where the key event ends
-
-    </script>
-
+<script src="assets/javascript/game.js"></script>
   </body>
-</html>
+  </html>
